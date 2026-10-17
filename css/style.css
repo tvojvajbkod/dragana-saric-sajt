@@ -3,17 +3,22 @@
    ========================================================= */
 
 :root {
-  /* Paleta */
-  --ivory: #F7F5EF;
+  /* Paleta: tamna petrolej-zelena + prašnjavo roze */
+  --ivory: #F7F4F1;
   --white: #FFFFFF;
-  --ink: #242820;
-  --ink-soft: #4A4F44;
-  --sage: #858F72;
-  --olive: #596346;
-  --olive-dark: #474F37;
-  --beige: #E9E2D6;
-  --beige-deep: #DCD3C3;
-  --line: rgba(36, 40, 32, .14);
+  --ink: #1C2B27;
+  --ink-soft: #4B5A55;
+  --sage: #7FA396;        /* prigušena zelena (detalji, linije) */
+  --olive: #1F5A4E;       /* osnovna tamna petrolej-zelena */
+  --olive-dark: #17463C;
+  --teal-deep: #184A40;
+  --teal-footer: #143E35;
+  --rose: #D9A6A0;        /* akcenat i dugmad na tamnoj pozadini */
+  --rose-dark: #CB918A;
+  --rose-light: #EBC3BD;
+  --beige: #F3E4DF;       /* blagi roze ton za sekcije */
+  --beige-deep: #E6CFC8;
+  --line: rgba(28, 43, 39, .14);
   --error: #9A3B2E;
 
   /* Tipografija */
@@ -95,7 +100,7 @@ p { margin: 0 0 1em; text-wrap: pretty; }
 .section--tight { padding-block: clamp(3rem, 2rem + 4vw, 5.5rem); }
 .section--white { background: var(--white); }
 .section--beige { background: var(--beige); }
-.section--ink { background: var(--ink); color: var(--ivory); }
+.section--ink { background: var(--olive); color: var(--ivory); }
 .section--ink h2, .section--ink h3 { color: var(--white); }
 
 .eyebrow {
@@ -104,7 +109,7 @@ p { margin: 0 0 1em; text-wrap: pretty; }
   color: var(--olive); margin-bottom: 1.5rem;
 }
 .eyebrow::before { content: ""; width: 2rem; height: 1px; background: currentColor; }
-.section--ink .eyebrow { color: #B9C2A4; }
+.section--ink .eyebrow { color: var(--rose-light); }
 
 .lead { font-size: var(--fs-lg); line-height: 1.6; color: var(--ink-soft); max-width: var(--measure); }
 .muted { color: var(--ink-soft); }
@@ -122,7 +127,7 @@ p { margin: 0 0 1em; text-wrap: pretty; }
   display: inline-flex; align-items: center; justify-content: center; gap: .6rem;
   min-height: 3.25rem; padding: .85rem 1.6rem;
   font-family: var(--sans); font-size: var(--fs-sm); font-weight: 600; letter-spacing: .01em;
-  text-decoration: none; border: 1px solid transparent; border-radius: var(--radius);
+  text-decoration: none; border: 1px solid transparent; border-radius: 999px;
   cursor: pointer; transition: background .25s var(--ease), color .25s var(--ease), border-color .25s var(--ease), transform .25s var(--ease);
 }
 .btn svg { width: 1rem; height: 1rem; flex: none; transition: transform .25s var(--ease); }
@@ -131,8 +136,8 @@ p { margin: 0 0 1em; text-wrap: pretty; }
 .btn--primary:hover { background: var(--olive-dark); }
 .btn--ghost { border-color: var(--ink); color: var(--ink); background: transparent; }
 .btn--ghost:hover { background: var(--ink); color: var(--white); }
-.btn--light { background: var(--ivory); color: var(--ink); }
-.btn--light:hover { background: var(--white); }
+.btn--light { background: var(--rose); color: var(--ink); }
+.btn--light:hover { background: var(--rose-light); }
 .btn--outline-light { border-color: rgba(247,245,239,.5); color: var(--ivory); }
 .btn--outline-light:hover { background: var(--ivory); color: var(--ink); }
 .btn--block { width: 100%; }
@@ -150,14 +155,14 @@ p { margin: 0 0 1em; text-wrap: pretty; }
 
 /* ---------- Oznake za neverifikovan sadržaj ---------- */
 .ph {
-  background: repeating-linear-gradient(-45deg, rgba(133,143,114,.10) 0 6px, rgba(133,143,114,.20) 6px 12px);
+  background: repeating-linear-gradient(-45deg, rgba(127,163,150,.10) 0 6px, rgba(127,163,150,.20) 6px 12px);
   border: 1px dashed var(--sage); border-radius: var(--radius);
   padding: .05em .4em; color: var(--ink); font-style: normal;
 }
 .ph-block {
   display: block; padding: 1rem 1.25rem; margin: 1rem 0;
   border: 1px dashed var(--sage); border-radius: var(--radius);
-  background: rgba(133,143,114,.08); font-size: var(--fs-sm); color: var(--ink-soft);
+  background: rgba(127,163,150,.08); font-size: var(--fs-sm); color: var(--ink-soft);
 }
 .ph-block strong { color: var(--ink); }
 
@@ -170,7 +175,7 @@ p { margin: 0 0 1em; text-wrap: pretty; }
 /* ---------- Header ---------- */
 .site-header {
   position: sticky; top: 0; z-index: 50;
-  background: rgba(247,245,239,.92); backdrop-filter: saturate(140%) blur(10px);
+  background: rgba(31,90,78,.97); backdrop-filter: saturate(140%) blur(10px);
   -webkit-backdrop-filter: saturate(140%) blur(10px);
   border-bottom: 1px solid transparent; transition: border-color .3s;
 }
@@ -321,7 +326,7 @@ body.menu-open { overflow: hidden; }
 .checklist { list-style: none; padding: 0; margin: 1.5rem 0 2rem; display: grid; gap: .8rem; }
 .checklist li { display: grid; grid-template-columns: 1.5rem 1fr; gap: .6rem; font-size: var(--fs-sm); }
 .checklist svg { width: 1.1rem; height: 1.1rem; color: var(--olive); margin-top: .25rem; }
-.section--ink .checklist svg { color: #B9C2A4; }
+.section--ink .checklist svg { color: var(--rose-light); }
 
 /* ---------- Forme ---------- */
 .form { display: grid; gap: 1rem; }
@@ -336,7 +341,7 @@ body.menu-open { overflow: hidden; }
 }
 .field textarea { min-height: 8rem; resize: vertical; }
 .field input:hover, .field textarea:hover { border-color: var(--sage); }
-.field input:focus, .field textarea:focus { outline: none; border-color: var(--olive); box-shadow: 0 0 0 3px rgba(89,99,70,.18); }
+.field input:focus, .field textarea:focus { outline: none; border-color: var(--olive); box-shadow: 0 0 0 3px rgba(31,90,78,.18); }
 .field.has-error input, .field.has-error textarea { border-color: var(--error); }
 .field__error { font-size: var(--fs-xs); color: var(--error); display: none; }
 .field.has-error .field__error { display: block; }
@@ -379,12 +384,12 @@ body.menu-open { overflow: hidden; }
 /* ---------- Program ---------- */
 .program { display: grid; gap: clamp(2rem, 1.5rem + 3vw, 5rem); align-items: center; }
 @media (min-width: 960px) { .program { grid-template-columns: 1.1fr .9fr; } }
-.program__visual { margin: 0; border-radius: var(--radius); overflow: hidden; background: #ECEBEA; aspect-ratio: 972 / 1200; max-height: 640px; }
+.program__visual { margin: 0; border-radius: var(--radius); overflow: hidden; background: #E9ECEB; aspect-ratio: 972 / 1200; max-height: 640px; }
 .program__visual img { width: 100%; height: 100%; object-fit: cover; transform: scale(1.03); }
 .program__specs { display: grid; grid-template-columns: repeat(3, 1fr); border-block: 1px solid rgba(247,245,239,.2); margin: 2rem 0; }
 .program__specs div { padding: 1.1rem .75rem 1.1rem 0; }
 .program__specs div + div { padding-left: .9rem; border-left: 1px solid rgba(247,245,239,.2); }
-.program__specs dt { font-size: var(--fs-xs); letter-spacing: .1em; text-transform: uppercase; color: #B9C2A4; margin-bottom: .3rem; }
+.program__specs dt { font-size: var(--fs-xs); letter-spacing: .1em; text-transform: uppercase; color: var(--rose-light); margin-bottom: .3rem; }
 .program__specs dd { margin: 0; font-family: var(--serif); font-size: 1.25rem; line-height: 1.2; color: var(--white); }
 .price-line { display: flex; align-items: baseline; gap: .75rem; margin-bottom: 1.5rem; }
 .price-line__value { font-family: var(--serif); font-size: 2.75rem; line-height: 1; color: var(--white); }
@@ -405,7 +410,7 @@ body.menu-open { overflow: hidden; }
 }
 .article-card__media svg { width: 46%; height: auto; color: var(--olive); transition: transform .6s var(--ease); }
 .article-card:hover .article-card__media svg { transform: scale(1.05); }
-.article-card__media--sage { background: #DDE0D3; }
+.article-card__media--sage { background: #DCE8E3; }
 .article-card__media--ivory { background: var(--white); }
 .article-card__media--olive { background: var(--olive); }
 .article-card__media--olive svg { color: var(--beige); }
@@ -426,7 +431,7 @@ body.menu-open { overflow: hidden; }
   padding: .55rem 1.1rem; font-size: var(--fs-sm); cursor: pointer; transition: all .2s;
 }
 .filter:hover { border-color: var(--olive); }
-.filter[aria-pressed="true"] { background: var(--ink); color: var(--white); border-color: var(--ink); }
+.filter[aria-pressed="true"] { background: var(--olive); color: var(--white); border-color: var(--olive); }
 .article-card.is-hidden { display: none; }
 
 /* ---------- Konsultacije CTA ---------- */
@@ -437,16 +442,16 @@ body.menu-open { overflow: hidden; }
 .consult__aside .btn { margin-bottom: 1.25rem; }
 
 /* ---------- Footer ---------- */
-.site-footer { background: var(--ink); color: rgba(247,245,239,.78); padding-block: clamp(3.5rem, 2.5rem + 3vw, 5.5rem) 2rem; font-size: var(--fs-sm); }
+.site-footer { background: var(--teal-footer); color: rgba(247,245,239,.78); padding-block: clamp(3.5rem, 2.5rem + 3vw, 5.5rem) 2rem; font-size: var(--fs-sm); }
 .site-footer a { text-decoration: none; transition: color .2s; }
 .site-footer a:hover { color: var(--white); }
 .footer-grid { display: grid; gap: 2.5rem; }
 @media (min-width: 760px) { .footer-grid { grid-template-columns: 1.6fr 1fr 1fr; } }
 @media (min-width: 1080px) { .footer-grid { grid-template-columns: 1.6fr 1fr 1fr 1.2fr; } }
 .footer-brand .brand__name { color: var(--white); font-size: 1.5rem; }
-.footer-brand .brand__title { color: #B9C2A4; }
+.footer-brand .brand__title { color: var(--rose-light); }
 .footer-brand p { margin-top: 1.25rem; max-width: 22rem; }
-.site-footer h4 { font-family: var(--sans); font-size: var(--fs-xs); font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: #B9C2A4; margin-bottom: 1.1rem; }
+.site-footer h4 { font-family: var(--sans); font-size: var(--fs-xs); font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: var(--rose-light); margin-bottom: 1.1rem; }
 .site-footer ul { list-style: none; margin: 0; padding: 0; display: grid; gap: .6rem; }
 .site-footer address { font-style: normal; display: grid; gap: .6rem; }
 .footer-disclaimer { margin-top: 3.5rem; padding-top: 2rem; border-top: 1px solid rgba(247,245,239,.14); font-size: var(--fs-xs); line-height: 1.65; color: rgba(247,245,239,.6); max-width: 60rem; }
@@ -461,7 +466,7 @@ body.menu-open { overflow: hidden; }
 .cookie {
   position: fixed; left: 1rem; right: 1rem; bottom: 1rem; z-index: 80; max-width: 30rem;
   background: var(--white); color: var(--ink); padding: 1.4rem 1.5rem; border-radius: var(--radius);
-  box-shadow: 0 18px 50px -12px rgba(36,40,32,.28); border: 1px solid var(--line); font-size: var(--fs-sm);
+  box-shadow: 0 18px 50px -12px rgba(28,43,39,.28); border: 1px solid var(--line); font-size: var(--fs-sm);
 }
 .cookie[hidden] { display: none; }
 .cookie h2 { font-size: 1.25rem; margin-bottom: .5rem; }
@@ -568,7 +573,7 @@ body.menu-open { overflow: hidden; }
 .outcomes { display: grid; gap: 0; counter-reset: o; padding: 0; margin: 0; }
 @media (min-width: 760px) { .outcomes { grid-template-columns: repeat(2, 1fr); gap: 0 3rem; } }
 .outcomes li { list-style: none; counter-increment: o; padding: 1.5rem 0; border-top: 1px solid rgba(247,245,239,.18); display: grid; grid-template-columns: 3rem 1fr; }
-.outcomes li::before { content: "0" counter(o); font-family: var(--serif); font-style: italic; color: #B9C2A4; font-size: 1.125rem; }
+.outcomes li::before { content: "0" counter(o); font-family: var(--serif); font-style: italic; color: var(--rose-light); font-size: 1.125rem; }
 .mini-author { display: grid; gap: 2rem; align-items: center; }
 @media (min-width: 760px) { .mini-author { grid-template-columns: 200px 1fr; gap: 3rem; } }
 .mini-author img { width: 200px; aspect-ratio: 1; object-fit: cover; object-position: 50% 15%; border-radius: var(--radius); }
@@ -638,3 +643,33 @@ body.menu-open { overflow: hidden; }
 .reveal.is-in { opacity: 1; transform: none; }
 .no-js .reveal { opacity: 1; transform: none; }
 .section--ink .consult__aside { color: rgba(247,245,239,.75); }
+
+/* ---------- Tamno zaglavlje i hero (paleta petrolej + roze) ---------- */
+.site-header { color: var(--white); }
+.site-header.is-scrolled { border-bottom-color: rgba(255,255,255,.12); }
+.site-header .brand__title { color: var(--rose-light); }
+.site-header .nav a { color: rgba(255,255,255,.78); }
+.site-header .nav a:hover, .site-header .nav a[aria-current="page"] { color: var(--white); border-bottom-color: var(--rose); }
+.site-header .btn--primary { background: var(--rose); color: var(--ink); border-radius: 999px; }
+.site-header .btn--primary:hover { background: var(--rose-light); }
+.menu-toggle { color: var(--white); }
+.menu-toggle__bars::before, .menu-toggle__bars::after { background: var(--white); }
+
+.hero { background: var(--olive); color: var(--ivory); }
+.hero h1 { color: var(--white); }
+.hero h1 em, .hero .hero__credibility { color: var(--rose-light); }
+.hero .lead, .hero .hero__note { color: rgba(247,244,241,.82); }
+.hero .breadcrumbs, .hero .breadcrumbs a { color: rgba(247,244,241,.7); }
+.hero .btn--primary { background: var(--rose); color: var(--ink); }
+.hero .btn--primary:hover { background: var(--rose-light); }
+.hero .btn--ghost { border-color: rgba(255,255,255,.55); color: var(--white); }
+.hero .btn--ghost:hover { background: var(--white); color: var(--ink); }
+.hero .portrait::before { border-color: var(--rose); }
+.hero .portrait__caption { background: var(--ivory); color: var(--ink); }
+
+/* Tamne sekcije: roze kao glavni akcenat */
+.section--ink h1 em, .section--ink h2 em { color: var(--rose-light); }
+.section--ink .btn--primary:not(.form-card .btn) { background: var(--rose); color: var(--ink); }
+.guide__tag { background: var(--rose); color: var(--ink); }
+.form-card .btn--primary { background: var(--olive); color: var(--white); }
+.form-card .btn--primary:hover { background: var(--olive-dark); }

@@ -221,7 +221,7 @@ p { margin: 0 0 1em; text-wrap: pretty; }
 .mobile-nav .btn { margin-top: 2rem; }
 body.menu-open { overflow: hidden; }
 
-@media (min-width: 1080px) {
+@media (min-width: 1240px) {
   .nav, .header-cta { display: block; }
   .menu-toggle, .mobile-nav { display: none !important; }
 }
@@ -673,3 +673,10 @@ body.menu-open { overflow: hidden; }
 .guide__tag { background: var(--rose); color: var(--ink); }
 .form-card .btn--primary { background: var(--olive); color: var(--white); }
 .form-card .btn--primary:hover { background: var(--olive-dark); }
+
+/* ---------- Usluge ---------- */
+.service-sub { font-family: var(--sans); font-size: var(--fs-xs); font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: var(--olive); margin: 1.75rem 0 .25rem; }
+.service-body .includes li { padding: .8rem 0; font-size: var(--fs-sm); }
+.brand__name, .nav a, .btn { white-space: nowrap; }
+.nav ul { gap: clamp(1rem, .2rem + 1.4vw, 1.75rem); }
+@media (max-width: 420px) { .brand__name { font-size: 1.0625rem; white-space: normal; } }

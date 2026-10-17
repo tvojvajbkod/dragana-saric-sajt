@@ -12,6 +12,7 @@ Statičan sajt (HTML/CSS/JS, bez build koraka). Otvorite `index.html` u pregleda
 | `clanak-disanje-na-usta.html` | Šablon članka + jedan kompletan tekst (**nacrt**) |
 | `vodic.html` | Landing stranica vodiča, bez navigacije |
 | `program.html` | Stranica programa Miostart |
+| `usluge.html` | Usluge ordinacije (preuzeto sa ortodont.rs/nase-usluge) |
 | `kontakt.html` | Konsultacija i forma za upit |
 | `politika-privatnosti.html` | Struktura politike (potreban pravnik) |
 
@@ -19,6 +20,7 @@ Statičan sajt (HTML/CSS/JS, bez build koraka). Otvorite `index.html` u pregleda
 
 - **razvojlica.ortodont.rs**: naslov vodiča (sa korice), lista „U njemu ćete saznati”, „Ovaj vodič je za vas ako”, biografija, citat. Postojeća forma je Zoho Forms iframe.
 - **razvojlica.ortodont.rs/ponuda/program/**: naziv, publika, sadržaj, 4 nedelje, 8–12 min, 1× (po potrebi 2×) dnevno, PDF, **19 €**, plaćanje karticom, citati autorke, „mama troje dece”, „specijalista ortopedije vilica”.
+- **ortodont.rs/nase-usluge**: tri glavne usluge, dodatne usluge, proces u 4 koraka i besplatna inicijalna konsultacija. Jezičke ispravke: „zagriza” → „zagrižaja”, „revolucionarna metoda” → „savremena metoda”, „Vizualizacija konačnog rezultata” → „Digitalni prikaz planiranog rezultata”.
 - **ortodont.rs/kontakt**: adresa, telefon, e-pošta, radno vreme, usluge.
 - **Instagram**: objave nisu javno čitljive. Teme članaka su preuzete samo iz brifa.
 - Fotografije su preuzete sa postojećeg sajta (`assets/img/`).
@@ -28,7 +30,7 @@ Statičan sajt (HTML/CSS/JS, bez build koraka). Otvorite `index.html` u pregleda
 1. Broj „500+ pacijenata” i da li je i dalje tačan.
 2. Obrazovanje: fakultet, specijalizacija, godine, članstva, sertifikati.
 3. Program: teme po nedeljama, uzrast deteta, rad uz ortodontsku terapiju ili logopeda, način isporuke PDF-a, uslovi i povraćaj novca.
-4. Konsultacija: trajanje, sadržaj, cena, šta poneti.
+4. Konsultacija: trajanje i šta poneti. Da je prva konsultacija besplatna preuzeto je sa ortodont.rs; proveriti da li važi i dalje.
 5. Članak o disanju na usta: stručna provera celog teksta i datum objave. Ostalih 6 članaka je označeno kao „Tekst u pripremi”.
 6. Adresa: na ortodont.rs piše „Strahinjica bana”, a ovde je ispravljeno u **Strahinjića bana**.
 7. E-adresa `dragana.dentist@mail.com` je preuzeta kakva jeste. Treba proveriti da li je ispravna (nije možda @gmail.com).

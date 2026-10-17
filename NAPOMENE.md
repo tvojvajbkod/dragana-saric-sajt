@@ -35,6 +35,10 @@ Statičan sajt (HTML/CSS/JS, bez build koraka). Otvorite `index.html` u pregleda
 6. Adresa: na ortodont.rs piše „Strahinjica bana”, a ovde je ispravljeno u **Strahinjića bana**.
 7. E-adresa `dragana.dentist@mail.com` je preuzeta kakva jeste. Treba proveriti da li je ispravna (nije možda @gmail.com).
 
+## Fotografije pre/posle
+
+Preuzete iz vodiča (`assets/img/primer-*.jpg`), objavljene na `usluge.html` (sekcija „Primeri iz prakse”) i u članku o disanju na usta. Saglasnost roditelja za objavu na sajtu potvrđena je 2026-10-17. Fotografija otvorenog zagrižaja nosi oznaku „MYOBRACE”; proveriti pravo korišćenja materijala proizvođača.
+
 ## Namerno ublažene tvrdnje
 
 Prema brifu (bez medicinskih obećanja), ovo sa postojećih stranica **nije preneto**:

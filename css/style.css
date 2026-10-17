@@ -692,3 +692,11 @@ body.menu-open { overflow: hidden; }
 .case__labels { display: flex; justify-content: space-between; gap: 1rem; margin-top: .6rem; font-size: var(--fs-xs); font-weight: 600; letter-spacing: .06em; text-transform: uppercase; color: var(--olive); }
 .case figcaption { margin-top: .6rem; font-size: var(--fs-sm); color: var(--ink-soft); }
 .case figcaption strong { color: var(--ink); font-weight: 600; }
+
+/* Nova naslovna vodiča: prikaz kao knjiga sa senkom */
+img[src$="vodic-naslovna.jpg"] { border-radius: 3px; box-shadow: 0 18px 40px -14px rgba(20,62,53,.45), 0 2px 6px rgba(20,62,53,.18); }
+.guide__cover-bg { background: var(--beige); }
+.guide__cover-bg img { width: 60%; height: auto; object-fit: initial; }
+.lp-cover { background: var(--beige); padding: 2.5rem; }
+.guide-band img { background: transparent; }
+.inline-cta img { width: 110px; }

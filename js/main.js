@@ -227,6 +227,127 @@ function initForms() {
   });
 }
 
+/* ---------- Lagane CSS 3D interakcije ---------- */
+function initModelPerspective() {
+  const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  document.querySelectorAll('[data-model]').forEach((model) => {
+    let rotateX = 0;
+    let rotateY = 0;
+    let touchStart = null;
+    const render = () => {
+      model.style.setProperty('--model-x', `${rotateX}deg`);
+      model.style.setProperty('--model-y', `${rotateY}deg`);
+    };
+
+    model.addEventListener('pointermove', (event) => {
+      if (reducedMotion) return;
+      if (event.pointerType === 'touch') {
+        if (!touchStart) return;
+        rotateY = Math.max(-18, Math.min(18, rotateY + (event.clientX - touchStart.x) * .35));
+        rotateX = Math.max(-10, Math.min(10, rotateX - (event.clientY - touchStart.y) * .2));
+        touchStart = { x: event.clientX, y: event.clientY };
+      } else {
+        const bounds = model.getBoundingClientRect();
+        rotateY = ((event.clientX - bounds.left) / bounds.width - .5) * 18;
+        rotateX = (.5 - (event.clientY - bounds.top) / bounds.height) * 10;
+      }
+      render();
+    });
+
+    model.addEventListener('pointerdown', (event) => {
+      if (reducedMotion || event.pointerType !== 'touch') return;
+      touchStart = { x: event.clientX, y: event.clientY };
+      model.setPointerCapture(event.pointerId);
+    });
+    model.addEventListener('pointerup', () => { touchStart = null; });
+    model.addEventListener('pointercancel', () => { touchStart = null; });
+    model.addEventListener('pointerleave', (event) => {
+      if (event.pointerType !== 'touch' && !reducedMotion) {
+        rotateX = 0;
+        rotateY = 0;
+        render();
+      }
+    });
+    model.addEventListener('keydown', (event) => {
+      if (reducedMotion) return;
+      const step = event.shiftKey ? 8 : 4;
+      if (event.key === 'ArrowLeft') rotateY = Math.max(-24, rotateY - step);
+      else if (event.key === 'ArrowRight') rotateY = Math.min(24, rotateY + step);
+      else if (event.key === 'ArrowUp') rotateX = Math.max(-14, rotateX - step);
+      else if (event.key === 'ArrowDown') rotateX = Math.min(14, rotateX + step);
+      else return;
+      event.preventDefault();
+      render();
+    });
+  });
+}
+
+function initTiltCards() {
+  if (matchMedia('(prefers-reduced-motion: reduce)').matches || !matchMedia('(hover: hover) and (pointer: fine)').matches) return;
+  document.querySelectorAll('[data-tilt]').forEach((card) => {
+    card.classList.add('tilt-ready');
+    card.addEventListener('pointermove', (event) => {
+      const bounds = card.getBoundingClientRect();
+      const x = (event.clientX - bounds.left) / bounds.width - .5;
+      const y = (event.clientY - bounds.top) / bounds.height - .5;
+      card.style.setProperty('--tilt-x', `${y * -5}deg`);
+      card.style.setProperty('--tilt-y', `${x * 5}deg`);
+    });
+    card.addEventListener('pointerleave', () => {
+      card.style.setProperty('--tilt-x', '0deg');
+      card.style.setProperty('--tilt-y', '0deg');
+    });
+  });
+}
+
+function initAnatomyControls() {
+  document.querySelectorAll('[data-anatomy]').forEach((explorer) => {
+    const controls = explorer.querySelectorAll('[data-anatomy-toggle]');
+    const status = explorer.querySelector('[data-anatomy-status]');
+    if (!controls.length || !status) return;
+    const labels = { jaws: 'vilice i zubi', tongue: 'jezik', breathing: 'disajni putevi' };
+    const updateStatus = () => {
+      const visible = [...controls]
+        .filter((button) => button.getAttribute('aria-pressed') === 'true')
+        .map((button) => labels[button.dataset.anatomyToggle]);
+      status.textContent = visible.length
+        ? `Prikazani slojevi: ${visible.join(', ')}.`
+        : 'Svi slojevi su skriveni; izaberite sloj da ga prikažete.';
+    };
+
+    controls.forEach((button) => {
+      button.addEventListener('click', () => {
+        const visible = button.getAttribute('aria-pressed') !== 'true';
+        button.setAttribute('aria-pressed', String(visible));
+        explorer.querySelectorAll(`[data-anatomy-part="${button.dataset.anatomyToggle}"]`).forEach((part) => {
+          part.classList.toggle('is-off', !visible);
+          part.setAttribute('aria-hidden', String(!visible));
+        });
+        updateStatus();
+      });
+    });
+    updateStatus();
+  });
+}
+
+function initMyoSteps() {
+  document.querySelectorAll('.myo-demo').forEach((demo) => {
+    const scene = demo.querySelector('[data-myo-scene]');
+    const caption = demo.querySelector('[data-myo-caption]');
+    const buttons = demo.querySelectorAll('[data-myo-step]');
+    if (!scene || !caption || !buttons.length) return;
+    const labels = { tongue: 'Položaj jezika', nose: 'Disanje kroz nos', muscles: 'Vežbe za oralnu muskulaturu' };
+    buttons.forEach((button) => {
+      button.addEventListener('click', () => {
+        const step = button.dataset.myoStep;
+        scene.dataset.step = step;
+        caption.textContent = labels[step];
+        buttons.forEach((item) => item.setAttribute('aria-pressed', String(item === button)));
+      });
+    });
+  });
+}
+
 /* ---------- Suptilna pojava sekcija ---------- */
 function initReveal() {
   const els = document.querySelectorAll('.reveal');
@@ -246,4 +367,8 @@ initFilters();
 initForms();
 initCookies();
 initReveal();
+initModelPerspective();
+initTiltCards();
+initAnatomyControls();
+initMyoSteps();
 document.querySelectorAll('[data-year]').forEach((el) => (el.textContent = new Date().getFullYear()));

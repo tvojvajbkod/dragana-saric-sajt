@@ -296,13 +296,13 @@ body.menu-open { overflow: hidden; }
 .anatomy-explorer__copy > p:not(.eyebrow) { color: var(--ink-soft); font-size: var(--fs-sm); }
 .anatomy-explorer__copy .eyebrow { margin-bottom: .85rem; }
 .anatomy-controls { display: flex; flex-wrap: wrap; gap: .5rem; margin: 1.25rem 0 .75rem; }
-.anatomy-toggle, .myo-demo__controls button {
+.anatomy-toggle {
   min-height: 2.6rem; padding: .55rem .85rem; border: 1px solid var(--line); border-radius: 999px;
   background: var(--white); color: var(--ink); font-size: var(--fs-xs); cursor: pointer;
   transition: background .2s, color .2s, border-color .2s, transform .2s;
 }
-.anatomy-toggle:hover, .myo-demo__controls button:hover { transform: translateY(-1px); border-color: var(--sage); }
-.anatomy-toggle[aria-pressed="true"], .myo-demo__controls button[aria-pressed="true"] { background: var(--olive); border-color: var(--olive); color: var(--white); }
+.anatomy-toggle:hover { transform: translateY(-1px); border-color: var(--sage); }
+.anatomy-toggle[aria-pressed="true"] { background: var(--olive); border-color: var(--olive); color: var(--white); }
 .anatomy-explorer__status { min-height: 1.5em; margin: 0 0 .5rem; color: var(--olive); font-size: var(--fs-xs); }
 .anatomy-explorer__note { font-size: var(--fs-xs) !important; color: var(--ink-soft); }
 .anatomy-stage {
@@ -457,28 +457,8 @@ body.menu-open { overflow: hidden; }
 /* ---------- Program ---------- */
 .program { display: grid; gap: clamp(2rem, 1.5rem + 3vw, 5rem); align-items: center; }
 @media (min-width: 960px) { .program { grid-template-columns: 1.1fr .9fr; } }
-.program__visual { position: relative; margin: 0; border-radius: var(--radius); overflow: hidden; background: #E9ECEB; aspect-ratio: 972 / 1200; max-height: 640px; perspective: 800px; }
+.program__visual { margin: 0; border-radius: var(--radius); overflow: hidden; background: #E9ECEB; aspect-ratio: 972 / 1200; max-height: 640px; }
 .program__visual img { width: 100%; height: 100%; object-fit: cover; transform: scale(1.03); }
-.myo-demo {
-  position: absolute; inset: auto .75rem .75rem; padding: .75rem .9rem .85rem; border: 1px solid rgba(28,43,39,.12);
-  border-radius: .75rem; color: var(--ink); background: rgba(255,255,255,.96); box-shadow: 0 .75rem 2rem rgba(28,43,39,.14);
-}
-.myo-demo__scene { display: grid; place-items: center; height: clamp(6.5rem, 22vw, 9.5rem); transform: perspective(650px) rotateX(5deg) rotateY(-5deg); transform-style: preserve-3d; }
-.myo-demo__scene svg { display: block; height: 100%; width: auto; max-width: 100%; filter: drop-shadow(0 5px 5px rgba(28,43,39,.12)); }
-.myo-demo__eyebrow { margin: .25rem 0 .55rem; color: var(--ink-soft); font-size: .7rem; font-weight: 600; letter-spacing: .04em; text-transform: uppercase; }
-.myo-demo__controls { display: flex; flex-wrap: wrap; gap: .4rem; }
-.myo-demo__controls button { min-height: 2.25rem; padding: .4rem .7rem; font-size: .72rem; }
-[data-myo-part] .myo-path { stroke-dasharray: 4 5; animation: myo-flow 2.4s linear infinite; }
-@keyframes myo-flow { to { stroke-dashoffset: -27; } }
-.myo-demo__scene[data-step="tongue"] [data-myo-part="tongue"],
-.myo-demo__scene[data-step="nose"] [data-myo-part="nose"],
-.myo-demo__scene[data-step="muscles"] [data-myo-part="muscles"] { opacity: 1; }
-.myo-demo__scene[data-step="tongue"] [data-myo-part="nose"],
-.myo-demo__scene[data-step="tongue"] [data-myo-part="muscles"],
-.myo-demo__scene[data-step="nose"] [data-myo-part="tongue"],
-.myo-demo__scene[data-step="nose"] [data-myo-part="muscles"],
-.myo-demo__scene[data-step="muscles"] [data-myo-part="tongue"],
-.myo-demo__scene[data-step="muscles"] [data-myo-part="nose"] { opacity: .18; }
 .program__specs { display: grid; grid-template-columns: repeat(3, 1fr); border-block: 1px solid rgba(247,245,239,.2); margin: 2rem 0; }
 .program__specs div { padding: 1.1rem .75rem 1.1rem 0; }
 .program__specs div + div { padding-left: .9rem; border-left: 1px solid rgba(247,245,239,.2); }
@@ -521,10 +501,9 @@ body.menu-open { overflow: hidden; }
   .jaw-float { right: -.4rem; bottom: .75rem; width: 44%; padding: .35rem .45rem; }
   .jaw-float__label { font-size: .6rem; }
   .anatomy-stage { min-height: 11rem; }
-  .myo-demo { inset: auto .5rem .5rem; padding: .55rem .65rem .65rem; }
 }
 @media (prefers-reduced-motion: reduce) {
-  .jaw-float__scene, .myo-demo__scene, [data-myo-part] .myo-path { animation: none !important; }
+  .jaw-float__scene { animation: none !important; }
   [data-tilt].tilt-ready, .service-model svg, .anatomy-stage__scene { transition: none !important; }
 }
 

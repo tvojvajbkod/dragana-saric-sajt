@@ -330,24 +330,6 @@ function initAnatomyControls() {
   });
 }
 
-function initMyoSteps() {
-  document.querySelectorAll('.myo-demo').forEach((demo) => {
-    const scene = demo.querySelector('[data-myo-scene]');
-    const caption = demo.querySelector('[data-myo-caption]');
-    const buttons = demo.querySelectorAll('[data-myo-step]');
-    if (!scene || !caption || !buttons.length) return;
-    const labels = { tongue: 'Položaj jezika', nose: 'Disanje kroz nos', muscles: 'Vežbe za oralnu muskulaturu' };
-    buttons.forEach((button) => {
-      button.addEventListener('click', () => {
-        const step = button.dataset.myoStep;
-        scene.dataset.step = step;
-        caption.textContent = labels[step];
-        buttons.forEach((item) => item.setAttribute('aria-pressed', String(item === button)));
-      });
-    });
-  });
-}
-
 /* ---------- Suptilna pojava sekcija ---------- */
 function initReveal() {
   const els = document.querySelectorAll('.reveal');
@@ -370,5 +352,4 @@ initReveal();
 initModelPerspective();
 initTiltCards();
 initAnatomyControls();
-initMyoSteps();
 document.querySelectorAll('[data-year]').forEach((el) => (el.textContent = new Date().getFullYear()));
